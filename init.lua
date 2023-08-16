@@ -1,3 +1,2 @@
 require("ronb")
-print("hello")
 
