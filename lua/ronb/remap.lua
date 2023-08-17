@@ -27,3 +27,12 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "Q", "<nop>")
+
+vim.keymap.set("n", "<C-/>", ":Commentary<CR>")
+vim.keymap.set("v", "<C-/>", ":Commentary<CR>")
+
+vim.keymap.set('x', '<Tab>', '>gv', { noremap = true, silent = true })
+vim.keymap.set('n', '<Tab>', '>>', { noremap = true, silent = true })
+vim.keymap.set('x', '<S-Tab>', '<gv', { noremap = true, silent = true })
+vim.keymap.set('n', '<S-Tab>', '<<', { noremap = true, silent = true })
+
