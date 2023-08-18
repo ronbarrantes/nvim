@@ -79,10 +79,20 @@ _G.packer_plugins = {
     path = "/Users/ronbarrantes/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["cloak.nvim"] = {
+    loaded = true,
+    path = "/Users/ronbarrantes/.local/share/nvim/site/pack/packer/start/cloak.nvim",
+    url = "https://github.com/laytan/cloak.nvim"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/Users/ronbarrantes/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["copilot.vim"] = {
+    loaded = true,
+    path = "/Users/ronbarrantes/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    url = "https://github.com/github/copilot.vim"
   },
   harpoon = {
     loaded = true,
@@ -138,6 +148,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/ronbarrantes/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["refactoring.nvim"] = {
+    loaded = true,
+    path = "/Users/ronbarrantes/.local/share/nvim/site/pack/packer/start/refactoring.nvim",
+    url = "https://github.com/theprimeagen/refactoring.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,

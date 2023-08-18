@@ -41,6 +41,9 @@ return require('packer').startup(function(use)
   }
 
   use('tpope/vim-commentary')
+  use("laytan/cloak.nvim")
+  use("theprimeagen/refactoring.nvim")
+  use("github/copilot.vim")
 
 
 end)
