@@ -33,8 +33,8 @@ vim.keymap.set("v", "<C-/>", ":Commentary<CR>")
 vim.keymap.set("x", "<C-/>", ":Commentary<CR>")
 vim.keymap.set("i", "<C-/>", "<Esc>:Commentary<CR>i", { noremap = true, silent = true } )
 
-vim.keymap.set('x', '<Tab>', '>gv', { noremap = true, silent = true })
+-- vim.keymap.set('x', '<Tab>', '>gv', { noremap = true, silent = true })
 vim.keymap.set('n', '<Tab>', '>>', { noremap = true, silent = true })
-vim.keymap.set('x', '<S-Tab>', '<gv', { noremap = true, silent = true })
+-- vim.keymap.set('x', '<S-Tab>', '<gv', { noremap = true, silent = true })
 vim.keymap.set('n', '<S-Tab>', '<<', { noremap = true, silent = true })
 

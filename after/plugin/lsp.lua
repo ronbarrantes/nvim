@@ -1,3 +1,4 @@
+-- Add extra packages with :Mason
 local lsp = require('lsp-zero')
 
 lsp.preset('recommended')

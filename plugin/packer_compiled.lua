@@ -169,6 +169,11 @@ _G.packer_plugins = {
     path = "/Users/ronbarrantes/.local/share/nvim/site/pack/packer/start/vim-commentary",
     url = "https://github.com/tpope/vim-commentary"
   },
+  ["vim-dispatch"] = {
+    loaded = true,
+    path = "/Users/ronbarrantes/.local/share/nvim/site/pack/packer/start/vim-dispatch",
+    url = "https://github.com/tpope/vim-dispatch"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/ronbarrantes/.local/share/nvim/site/pack/packer/start/vim-fugitive",
