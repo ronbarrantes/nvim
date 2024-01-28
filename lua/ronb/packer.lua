@@ -51,7 +51,13 @@ return require('packer').startup(function(use)
   use("theprimeagen/refactoring.nvim")
   use("github/copilot.vim")
 
-  require('packer').use { 'mhartington/formatter.nvim' }
- 
+  -- require('packer').use { 'mhartington/formatter.nvim' }
 
+  use({
+    "stevearc/conform.nvim",
+    config = function()
+      require("conform").setup()
+    end,
+  })
+  
 end)
