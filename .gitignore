@@ -67,3 +67,7 @@ crash.log
 output-*/
 
 # End of https://www.toptal.com/developers/gitignore/api/lua,packer
+
+EXTRA FROM PROJECT
+
+packer_compiled.lua
