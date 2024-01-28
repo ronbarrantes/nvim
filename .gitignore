@@ -70,4 +70,4 @@ output-*/
 
 EXTRA FROM PROJECT
 
-packer_compiled.lua
+*/**/packer_compiled.lua
