@@ -19,7 +19,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
 	["<C-y>"] = cmp.mapping.confirm({ select = true }),
   ["D-y"] = cmp.mapping.confirm({ select = true }), -- for using on mac confirm lsp
-  ["D-Scape"] = cmp.mapping.complete()
+  ["D-Scape"] = cmp.mapping.complete() -- D is used for Command instead of Ctrl
 })
 
 lsp.setup_nvim_cmp({

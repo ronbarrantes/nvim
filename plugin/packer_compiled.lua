@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "/Users/ronbarrantes/.local/share/nvim/site/pack/packer/start/copilot.vim",
     url = "https://github.com/github/copilot.vim"
   },
+  ["formatter.nvim"] = {
+    loaded = true,
+    path = "/Users/ronbarrantes/.local/share/nvim/site/pack/packer/start/formatter.nvim",
+    url = "https://github.com/mhartington/formatter.nvim"
+  },
   harpoon = {
     loaded = true,
     path = "/Users/ronbarrantes/.local/share/nvim/site/pack/packer/start/harpoon",
