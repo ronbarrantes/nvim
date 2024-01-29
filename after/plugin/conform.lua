@@ -13,10 +13,7 @@ require("conform").setup({
     -- Use the "_" filetype to run formatters on filetypes that don't
     -- have other formatters configured.
     ["_"] = { "trim_whitespace" },
-
-
   },
-
 
   -- If this is set, Conform will run the formatter on save.
   -- It will pass the table to conform.format().
@@ -46,5 +43,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
   callback = function(args)
     require("conform").format({ bufnr = args.buf })
+
+    -- Add EOF newline
+    local bufnr = args.buf
+    local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+    if lines[#lines] ~= "" then
+      vim.api.nvim_buf_set_lines(bufnr, -1, -1, false, { "" })
+    end
+
+    -- END Add EOF newline
   end,
 })
+
