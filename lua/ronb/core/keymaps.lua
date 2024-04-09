@@ -23,21 +23,21 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "scrolls up half screen, cursor
 vim.keymap.set("n", "n", "nzzzv", { desc = "moves to next search match, center cursor vertically, enters visual mode" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "moves to previous search match, centers cursor vertically, enters visual mode" })
 
-vim.keymap.set("x", "<leader>p", '"_dP')
+vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Deletes and pastes without affecting clipboard" })
 
-vim.keymap.set("n", "<leader>y", '"+y')
-vim.keymap.set("v", "<leader>y", '"+y')
-vim.keymap.set("n", "<leader>Y", '"+Y')
+vim.keymap.set("n", "<leader>y", '"+y', { desc = "Copies to system clipboard in normal mode" })
+vim.keymap.set("v", "<leader>y", '"+y', { desc = "Copies to system clipboard in visual mode" })
+vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "Copies to system clipboard including the current line" })
 
-vim.keymap.set("n", "<leader>d", '"_d')
-vim.keymap.set("v", "<leader>d", '"_d')
+vim.keymap.set("n", "<leader>d", '"_d', { desc = "Deletes without affecting clipboard in normal mode" })
+vim.keymap.set("v", "<leader>d", '"_d', { desc = "Deletes without affecting clipboard in visual mode" })
 
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Moves to next item in quickfix list" })
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Moves to previous item in quickfix list" })
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Moves to next location list item" })
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Moves to previous location list item" })
 
-keymap.set("n", "Q", "<nop>", { desc = "Something awful"})
+keymap.set("n", "Q", "<nop>")
 
 -- vim.keymap.set("n", "<C-/>", ":Commentary<CR>")
 -- vim.keymap.set("v", "<C-/>", ":Commentary<CR>")

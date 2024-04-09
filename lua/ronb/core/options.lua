@@ -39,8 +39,7 @@ opt.updatetime = 50
 opt.colorcolumn = "80"
 
 opt.backspace = "indent,eol,start"
-
-opt.clipboard:append("unnamedplus") -- use system clipboard 
+-- opt.clipboard:append("unnamedplus") -- use system clipboard 
 
 -- split window
 opt.splitright = true
