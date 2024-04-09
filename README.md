@@ -1,4 +1,10 @@
-# 💤 LazyVim
+# LazyVim
 
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+Things needed for this thing to work
+
+- Nvim
+- Node
+- Lua
+- ripgrep
+- a nerd font (currently using Maslo Nerd Font)
+- a terminal that supports true color (Currently using iterm2 on MacOS)
