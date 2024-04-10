@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap 
 
-keymap.set("i", "qq", "<ESC>", { desc = "Exit insert mode with qq" })
+-- keymap.set("i", "qq", "<ESC>", { desc = "Exit insert mode with qq" })
 
 keymap.set("n", "<leader>fv", vim.cmd.Ex, { desc = "File View" })
 
