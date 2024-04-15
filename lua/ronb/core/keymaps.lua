@@ -23,7 +23,6 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 
 -- OLD KEYMAPS 
 
-
 -- vim.keymap.set("n", "<leader>u", "UndotreeShow<CR>")
 
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Visual Line Down" })
@@ -52,10 +51,10 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Moves to previous
 
 keymap.set("n", "Q", "<nop>")
 
--- vim.keymap.set("n", "<C-/>", ":Commentary<CR>")
--- vim.keymap.set("v", "<C-/>", ":Commentary<CR>")
--- vim.keymap.set("x", "<C-/>", ":Commentary<CR>")
--- vim.keymap.set("i", "<C-/>", "<Esc>:Commentary<CR>i", { noremap = true, silent = true })
+ vim.keymap.set("n", "<C-/>", ":Commentary<CR>")
+ vim.keymap.set("v", "<C-/>", ":Commentary<CR>")
+ vim.keymap.set("x", "<C-/>", ":Commentary<CR>")
+ vim.keymap.set("i", "<C-/>", "<Esc>:Commentary<CR>i", { noremap = true, silent = true })
 
 -- -- vim.keymap.set('x', '<Tab>', '>gv', { noremap = true, silent = true })
 -- vim.keymap.set("n", "<Tab>", ">>", { noremap = true, silent = true })
