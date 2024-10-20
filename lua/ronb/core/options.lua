@@ -16,13 +16,13 @@ opt.smartindent = true
 
 opt.wrap = false
 
--- opt.swapfile = false
--- opt.backup = false
--- opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
--- opt.undofile = true
+opt.swapfile = false
+opt.backup = false
+opt.undofile = true
+opt.undodir = { os.getenv("HOME") .. "/.vim/undodir" }
 
 opt.ignorecase = true
-opt.smartcase = true 
+opt.smartcase = true
 opt.hlsearch = false
 opt.incsearch = true
 -- opt.cursorline = true
@@ -39,9 +39,8 @@ opt.updatetime = 50
 opt.colorcolumn = "80"
 
 opt.backspace = "indent,eol,start"
--- opt.clipboard:append("unnamedplus") -- use system clipboard 
+-- opt.clipboard:append("unnamedplus") -- use system clipboard
 
 -- split window
 opt.splitright = true
 opt.splitbelow = true
-

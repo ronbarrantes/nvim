@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-local keymap = vim.keymap 
+local keymap = vim.keymap
 
 -- keymap.set("i", "qq", "<ESC>", { desc = "Exit insert mode with qq" })
 
@@ -14,14 +14,13 @@ keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make split equal size" })
 keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split window" })
 
-
 keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
 keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
 
--- OLD KEYMAPS 
+-- OLD KEYMAPS
 
 -- vim.keymap.set("n", "<leader>u", "UndotreeShow<CR>")
 
@@ -33,7 +32,12 @@ vim.keymap.set("n", "J", "mzJ`z", { desc = "joins current line with next, cursor
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "scrolls down half screen, cursor at top" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "scrolls up half screen, cursor at top" })
 vim.keymap.set("n", "n", "nzzzv", { desc = "moves to next search match, center cursor vertically, enters visual mode" })
-vim.keymap.set("n", "N", "Nzzzv", { desc = "moves to previous search match, centers cursor vertically, enters visual mode" })
+vim.keymap.set(
+	"n",
+	"N",
+	"Nzzzv",
+	{ desc = "moves to previous search match, centers cursor vertically, enters visual mode" }
+)
 
 vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Deletes and pastes without affecting clipboard" })
 
@@ -51,10 +55,13 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Moves to previous
 
 keymap.set("n", "Q", "<nop>")
 
- vim.keymap.set("n", "<C-/>", ":Commentary<CR>", { noremap = true, silent = true })
- vim.keymap.set("v", "<C-/>", ":Commentary<CR>", { noremap = true, silent = true })
- vim.keymap.set("x", "<C-/>", ":Commentary<CR>", { noremap = true, silent = true })
- vim.keymap.set("i", "<C-/>", "<Esc>:Commentary<CR>i", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-/>", ":Commentary<CR>", { noremap = true, silent = true })
+vim.keymap.set("v", "<C-/>", ":Commentary<CR>", { noremap = true, silent = true })
+vim.keymap.set("x", "<C-/>", ":Commentary<CR>", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-/>", "<Esc>:Commentary<CR>i", { noremap = true, silent = true })
+
+-- FUGITIVE
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git" })
 
 -- -- vim.keymap.set('x', '<Tab>', '>gv', { noremap = true, silent = true })
 -- vim.keymap.set("n", "<Tab>", ">>", { noremap = true, silent = true })
@@ -75,4 +82,3 @@ keymap.set("n", "Q", "<nop>")
 -- -- vim.keymap.set("i", "<Right>", '<ESC>:echoe "Use l"<CR>')
 -- -- vim.keymap.set("i", "<Up>", '<ESC>:echoe "Use k"<CR>')
 -- -- vim.keymap.set("i", "<Down>", '<ESC>:echoe "Use j"<CR>')
-
