@@ -22,7 +22,7 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 
 -- OLD KEYMAPS
 
--- vim.keymap.set("n", "<leader>u", "UndotreeShow<CR>")
+keymap.set("n", "<leader>u", "<cmd>lua require('undotree').toggle()<cr>", { desc = "Toggle Undotree" })
 
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Visual Line Down" })
 keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Visual Line Up" })
