@@ -63,13 +63,13 @@ vim.keymap.set("i", "<C-/>", "<Esc>:Commentary<CR>i", { noremap = true, silent =
 -- FUGITIVE
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git" })
 
--- -- vim.keymap.set('x', '<Tab>', '>gv', { noremap = true, silent = true })
+-- vim.keymap.set('x', '<Tab>', '>gv', { noremap = true, silent = true })
 -- vim.keymap.set("n", "<Tab>", ">>", { noremap = true, silent = true })
 -- -- vim.keymap.set('x', '<S-Tab>', '<gv', { noremap = true, silent = true })
 -- vim.keymap.set("n", "<S-Tab>", "<<", { noremap = true, silent = true })
 
 -- for opening terminal
--- vim.keymap.set("n", "<C-`>", ":terminal<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-`>", ":terminal<CR>", { noremap = true, silent = true, desc = "Open Terminal" })
 
 -- disables the arrow keys in normal mode
 -- -- vim.keymap.set("n", "<Left>", ':echoe "Use h"<CR>')
