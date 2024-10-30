@@ -1,36 +1,21 @@
-# My NeoVim configs
+# LazyVim
 
-for this to work packer is required to be installed
+Things needed for this thing to work
 
-Go to the [WBThomason's Packer](https://github.com/wbthomason/packer.nvim) for mor packer info
+- Nvim
+- Node
+- Lua
+- ripgrep
+- a nerd font (currently using Maslo Nerd Font)
+- a terminal that supports true color (Currently using iterm2 on MacOS)
 
-### For Unix, Linux
+### Other things to add
 
-```bash
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-```
-
-### For Window Powershell
-
-```bash
-git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
-```
-
-## Next
-
-- Go to the Packer file using vim
-
-do `:so` for to source the file
-
-then do `:PackerInstall` to install the plugins
-
-## When updating the plugins
-
-do `:PackerSync` to sync and update the plugins
-
-## Plugins
-
-### Mason
-
-use `:Mason` to add languages
+lsp
+treesitter
+undotree
+cloak
+fugitive
+tpope
+refactoring
+use("github/copilot.vim")
