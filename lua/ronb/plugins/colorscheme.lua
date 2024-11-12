@@ -31,14 +31,13 @@ return {
 				colors.fg_gutter = fg_gutter
 				colors.fg_sidebar = fg_dark
 			end,
+			on_highlights = function(highlights)
+				highlights.Comment = { fg = "#00A322", italic = true }
+				highlights.LspDiagnosticsVirtualTextUnused = { fg = "#808080", italic = true } -- Gray and italic for unused variables
+			end,
 		})
 
 		-- Set the colorscheme
 		vim.cmd("colorscheme tokyonight")
-
-		-- Custom highlighting for unused variables (gray color, italic)
-		vim.cmd([[
-			highlight LspDiagnosticsVirtualTextUnused guifg=#808080 gui=italic
-		]])
 	end,
 }
