@@ -19,3 +19,10 @@ fugitive
 tpope
 refactoring
 use("github/copilot.vim")
+
+## NOTES
+
+- I need lua, python (probably)
+- I need to download `fzf`
+- I need `brew install ripgrep`
+- I need to temporarily get github copilot to sign in and then I can do without it (probably)
