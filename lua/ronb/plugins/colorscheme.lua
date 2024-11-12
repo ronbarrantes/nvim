@@ -12,7 +12,6 @@ return {
 		local fg_gutter = "#627E97"
 		local border = "#547998"
 
-
 		require("tokyonight").setup({
 			style = "night",
 
@@ -33,7 +32,13 @@ return {
 				colors.fg_sidebar = fg_dark
 			end,
 		})
+
+		-- Set the colorscheme
 		vim.cmd("colorscheme tokyonight")
+
+		-- Custom highlighting for unused variables (gray color, italic)
+		vim.cmd([[
+			highlight LspDiagnosticsVirtualTextUnused guifg=#808080 gui=italic
+		]])
 	end,
 }
-
