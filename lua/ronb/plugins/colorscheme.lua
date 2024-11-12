@@ -32,7 +32,7 @@ return {
 				colors.fg_sidebar = fg_dark
 			end,
 			on_highlights = function(highlights)
-				highlights.Comment = { fg = "#00A322", italic = true }
+				highlights.Comment = { fg = "#A5A300", italic = true }
 				highlights.LspDiagnosticsVirtualTextUnused = { fg = "#808080", italic = true } -- Gray and italic for unused variables
 			end,
 		})
