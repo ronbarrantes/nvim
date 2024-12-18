@@ -1,7 +1,14 @@
 -- vim.cmd("let g:netrw_liststyle = 3")
-vim.o.mouse = "" -- remove mouse support
+-- vim.o.mouse = "" -- remove mouse support
+vim.o.fixendofline = true
 
 local opt = vim.opt
+
+-- Remove mouse support
+opt.mouse = ""
+opt.eol = true
+
+-- Ensure end of line character at the end of files
 
 opt.relativenumber = true
 opt.number = true
