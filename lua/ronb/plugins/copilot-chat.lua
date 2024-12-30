@@ -3,8 +3,8 @@ return {
 		"CopilotC-Nvim/CopilotChat.nvim",
 		branch = "main",
 		dependencies = {
-			{ "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-			-- { "github/copilot.vim" }, -- or
+			-- { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+			{ "github/copilot.vim" }, -- or
 			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
 		},
 		build = "make tiktoken", -- Only on MacOS or Linux
