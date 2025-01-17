@@ -4,6 +4,8 @@ vim.o.fixendofline = true
 
 local opt = vim.opt
 
+vim.g.copilot_enabled = false
+
 -- Remove mouse support
 opt.mouse = ""
 opt.eol = true
