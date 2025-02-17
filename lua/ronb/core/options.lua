@@ -15,10 +15,18 @@ opt.fixendofline = true
 -- Set file format to Unix
 opt.fileformat = "unix"
 
--- Autocmd to ensure newline at end of file
+-- -- Autocmd to ensure newline at end of file
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+-- 	pattern = "*",
+-- 	command = [[if &fixendofline | call setline('$', substitute(getline('$'), '\n\+$', '', '')) | endif]],
+-- })
+--
+
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
-	command = [[if &fixendofline | call setline('$', substitute(getline('$'), '\n\+$', '', '')) | endif]],
+	callback = function()
+		vim.opt.fixendofline = true
+	end,
 })
 
 opt.relativenumber = true
