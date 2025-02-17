@@ -1,6 +1,5 @@
 -- vim.cmd("let g:netrw_liststyle = 3")
 -- vim.o.mouse = "" -- remove mouse support
-vim.o.fixendofline = true
 
 local opt = vim.opt
 
@@ -11,6 +10,16 @@ opt.mouse = ""
 opt.eol = true
 
 -- Ensure end of line character at the end of files
+opt.fixendofline = true
+
+-- Set file format to Unix
+opt.fileformat = "unix"
+
+-- Autocmd to ensure newline at end of file
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
+	command = [[if &fixendofline | call setline('$', substitute(getline('$'), '\n\+$', '', '')) | endif]],
+})
 
 opt.relativenumber = true
 opt.number = true

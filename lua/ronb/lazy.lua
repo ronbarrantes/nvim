@@ -11,18 +11,23 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- TODO: move this to a different file
+-- -- TODO: move this to a different file
 
--- Enable mouse support
-vim.o.mouse = "a"
+-- -- Enable mouse support
+-- vim.o.mouse = "a"
 
--- Confine mouse scrolling to the current buffer
-vim.api.nvim_create_autocmd("VimEnter", {
-	pattern = "*",
-	command = "set mouse=a",
-})
+-- -- Confine mouse scrolling to the current buffer
+-- vim.api.nvim_create_autocmd("VimEnter", {
+-- 	pattern = "*",
+-- 	command = "set mouse=a",
+-- })
 
-require("lazy").setup({ { import = "ronb.plugins" }, { import = "ronb.plugins.lsp" } }, {
+require("lazy").setup({
+	spec = {
+		{ import = "ronb.plugins" },
+		{ import = "ronb.plugins.lsp" },
+	},
+}, {
 	checker = {
 		enabled = true,
 		notify = false,
