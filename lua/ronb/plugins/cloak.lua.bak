@@ -1,26 +1,2 @@
-return {
-  "laytan/cloak.nvim",
-  event = "VeryLazy",
-  config = function()
-    require("cloak").setup({
-      enabled = true,
-      cloak_character = "*",
-      cloak_length = nil,
-      try_all_patterns = true,
-      patterns = {
-        -- Match all .env files except .env.example
-        file_pattern = {
-          ".env",         -- Match `.env`
-          ".env.*",       -- Match `.env.local`, `.env.production`, etc.
-          "!*.example",   -- Exclude `.env.example`
-        },
+return { "laytan/cloak.nvim" }
 
-        -- Match an equals sign and any character after it
-        cloak_pattern = "=.+",
-
-        -- A function, table, or string to generate the replacement
-        replace = nil,
-      },
-    })
-  end,
-}
