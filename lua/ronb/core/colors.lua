@@ -8,3 +8,7 @@ colors = {
 	bg = "#112638",
 	inactive_bg = "#2c3043",
 }
+
+
+-- how do I split an empty window in nvim  --
+
