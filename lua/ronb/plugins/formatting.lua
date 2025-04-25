@@ -5,6 +5,25 @@ return {
 		local conform = require("conform")
 
 		conform.setup({
+			-- NEW STUFF
+			log_level = vim.log.levels.DEBUG,
+			formatters = {
+				prettier_custom = {
+					command = "npx",
+					args = {
+						"prettier",
+						"--stdin-filepath",
+						"$FILENAME",
+					},
+					stdin = true,
+					cwd = require("conform.util").root_file({
+						".prettierrc",
+						"package.json",
+						".git",
+					}),
+				},
+			},
+			-- END NEW STUFF
 			formatters_by_ft = {
 				javascript = { "prettier" },
 				typescript = { "prettier" },
