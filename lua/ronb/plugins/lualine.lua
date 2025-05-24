@@ -5,17 +5,6 @@ return {
 		local lualine = require("lualine")
 		local lazy_status = require("lazy.status") -- to configure lazy pending updates count
 
-		--    local colors = {
-		--      blue = "#65D1FF",
-		--      green = "#3EFFDC",
-		--      violet = "#FF61EF",
-		--      yellow = "#FFDA7B",
-		--      red = "#FF4A4A",
-		--      fg = "#c3ccdc",
-		--      bg = "#112638",
-		--      inactive_bg = "#2c3043",
-		--    }
-		--
 		local my_lualine_theme = {
 			normal = {
 				a = { bg = colors.blue, fg = colors.bg, gui = "bold" },
@@ -52,9 +41,16 @@ return {
 		-- configure lualine with modified theme
 		lualine.setup({
 			options = {
-				theme = my_lualine_theme,
+				-- theme = my_lualine_theme,
+				theme = "ayu_dark",
 			},
 			sections = {
+
+				lualine_a = { "mode" },
+				lualine_b = { "branch", "diff", "diagnostics" },
+				lualine_c = { "filename" },
+				-- lualine_c = { "os.date('%a')", "data", "require'lsp-status'.status()" },
+				-- lualine_x = { "encoding", "fileformat", "filetype" },
 				lualine_x = {
 					{
 						lazy_status.updates,
@@ -65,6 +61,16 @@ return {
 					{ "fileformat" },
 					{ "filetype" },
 				},
+				lualine_y = { "progress" },
+				lualine_z = { "location" },
+			},
+			inactive_sections = {
+				lualine_a = {},
+				lualine_b = {},
+				lualine_c = { "filename" },
+				lualine_x = { "location" },
+				lualine_y = {},
+				lualine_z = {},
 			},
 		})
 	end,
