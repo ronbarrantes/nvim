@@ -3,8 +3,13 @@ return {
 	version = false,
 
 	opts = {
-		symbol = "│",
-		delay = 25,
+		draw = {
+			delay = 100,
+			animation = function(s, n)
+				return 10
+			end,
+		},
 		options = { try_as_border = true },
+		symbol = "│",
 	},
 }
