@@ -69,8 +69,13 @@ vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git" })
 -- vim.keymap.set("n", "<S-Tab>", "<<", { noremap = true, silent = true })
 
 -- for opening terminal
-vim.keymap.set("n", "<C-`>", ":terminal<CR>", { noremap = true, silent = true, desc = "Open Terminal" })
+-- vim.keymap.set("n", "<C-`>", ":terminal<CR>", { noremap = true, silent = true, desc = "Open Terminal" })
 
+-- TMUX
+vim.keymap.set("n", "<C-h>", "<cmd> TmuxNavigationLeft<CR>", { noremap = true, silent = true, desc = "Window Left" })
+vim.keymap.set("n", "<C-l>", "<cmd> TmuxNavigationRight<CR>", { noremap = true, silent = true, desc = "Window Right" })
+vim.keymap.set("n", "<C-j>", "<cmd> TmuxNavigationDown<CR>", { noremap = true, silent = true, desc = "Window Down" })
+vim.keymap.set("n", "<C-k>", "<cmd> TmuxNavigationUp<CR>", { noremap = true, silent = true, desc = "Window Up" })
 -- disables the arrow keys in normal mode
 -- -- vim.keymap.set("n", "<Left>", ':echoe "Use h"<CR>')
 -- -- vim.keymap.set("n", "<Right>", ':echoe "Use l"<CR>')
