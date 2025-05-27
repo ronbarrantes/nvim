@@ -55,10 +55,10 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Moves to previous
 
 keymap.set("n", "Q", "<nop>")
 
-vim.keymap.set("n", "<C-/>", ":Commentary<CR>", { noremap = true, silent = true })
-vim.keymap.set("v", "<C-/>", ":Commentary<CR>", { noremap = true, silent = true })
-vim.keymap.set("x", "<C-/>", ":Commentary<CR>", { noremap = true, silent = true })
-vim.keymap.set("i", "<C-/>", "<Esc>:Commentary<CR>i", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>/", ":Commentary<CR>", { noremap = true, silent = true })
+vim.keymap.set("v", "<leader>/", ":Commentary<CR>", { noremap = true, silent = true })
+vim.keymap.set("x", "<leader>/", ":Commentary<CR>", { noremap = true, silent = true })
+vim.keymap.set("i", "<leader>/", "<Esc>:Commentary<CR>i", { noremap = true, silent = true })
 
 -- FUGITIVE
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git" })
