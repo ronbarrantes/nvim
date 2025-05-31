@@ -27,20 +27,27 @@ return {
 			formatters_by_ft = {
 				javascript = { "prettier" },
 				typescript = { "prettier" },
+				json = { "prettier" },
 				javascriptreact = { "prettier" },
 				typescriptreact = { "prettier" },
 				svelte = { "prettier" },
 				css = { "prettier" },
 				html = { "prettier" },
-				json = { "prettier" },
 				yaml = { "prettier" },
 				markdown = { "prettier" },
 				graphql = { "prettier" },
 				liquid = { "prettier" },
-				c = { "clang-format" }, -- Ensure clang-format is set for C files
+				c = { "clang-format" },
 				lua = { "stylua" },
 				python = { "isort", "black" },
+				go = { "goimports", "gofumpt" },
+				templ = {
+					command = "templ",
+					args = { "fmt" },
+					stdin = false, -- templ does not support stdin formatting
+				},
 			},
+
 			format_on_save = {
 				lsp_fallback = true,
 				async = false,

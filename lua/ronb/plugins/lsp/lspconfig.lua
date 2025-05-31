@@ -44,8 +44,8 @@ return {
 				opts.desc = "See available code actions"
 				keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
-				-- CopilotChat
-				keymap.set({ "n", "v" }, "<leader>cc", vim.cmd.CopilotChatToggle, { desc = "CopilotChat" })
+				opts.desc = "CopilotChat"
+				keymap.set({ "n", "v" }, "<leader>cc", vim.cmd.CopilotChatToggle, opts)
 
 				opts.desc = "Smart rename"
 				keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
