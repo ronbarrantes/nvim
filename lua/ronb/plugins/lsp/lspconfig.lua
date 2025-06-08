@@ -10,6 +10,16 @@ return {
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
 
+		-- THE LINE BELOW PROBABLY NO WORKIES
+		lspconfig.htmx.setup({
+			cmd = { vim.fn.expand("~/.cargo/bin/htmx-lsp") },
+			filetypes = { "html", "templ" },
+			--root_dir = lspconfig.util.root_pattern("index.html", ".git", "."),
+			root_dir = function()
+				return (vim.fn.getcwd ~= nil and vim.fn.getcwd()) or vim.loop.cwd()
+			end,
+		})
+
 		-- import mason_lspconfig plugin
 		local mason_lspconfig = require("mason-lspconfig")
 
