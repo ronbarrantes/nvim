@@ -15,7 +15,8 @@ return {
 			return result:match("Dark") and "dark" or "light"
 		end
 
-		local theme = get_system_theme()
+		-- local theme = get_system_theme()
+    local theme = "dark"
 		local bg = theme == "dark" and "#030303" or "#FFFFFF"
 		local bg_dark = theme == "dark" and "#010413" or "#F0F0F0"
 		local bg_highlight = theme == "dark" and "#042642" or "#E0E0E0"
