@@ -75,8 +75,10 @@ return {
 			end,
 		})
 
-		-- capabilities for autocompletion
+		-- capabilities for autocompletion with position encoding
 		local capabilities = cmp_nvim_lsp.default_capabilities()
+		capabilities.general = capabilities.general or {}
+		capabilities.general.positionEncodings = { "utf-16", "utf-8" }
 
 		-- diagnostic symbols
 		vim.diagnostic.config({
