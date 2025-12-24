@@ -1,5 +1,9 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
+-- Prefer `vim.uv` (Neovim 0.10+). Avoid `vim.loop` dot-access which triggers
+-- deprecation diagnostics in newer Neovim/LuaLS; `vim["loop"]` keeps older
+-- versions working without the warning.
+local uv = vim.uv or vim["loop"]
+if not uv.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
 		"clone",
