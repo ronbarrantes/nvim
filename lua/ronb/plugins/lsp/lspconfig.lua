@@ -15,22 +15,29 @@ return {
 
 		local keymap = vim.keymap -- for conciseness
 
-		-- define htmx manually
-		vim.lsp.config("htmx", {
-			cmd = { vim.fn.expand("~/.cargo/bin/htmx-lsp") },
-			filetypes = { "html", "templ" },
-			root_dir = function()
-				return (vim.fn.getcwd ~= nil and vim.fn.getcwd()) or vim.loop.cwd()
-			end,
-		})
-		vim.lsp.enable("htmx")
+		-- capabilities for autocompletion
+		local capabilities = cmp_nvim_lsp.default_capabilities()
 
-		-- global keymaps on LspAttach
+		-- diagnostic symbols
+		vim.diagnostic.config({
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = " ",
+					[vim.diagnostic.severity.WARN] = " ",
+					[vim.diagnostic.severity.HINT] = "󰠠 ",
+					[vim.diagnostic.severity.INFO] = " ",
+				},
+			},
+		})
+
+		-- global keymaps and server-specific logic on LspAttach
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
+				local client = vim.lsp.get_client_by_id(ev.data.client_id)
 				local opts = { buffer = ev.buf, silent = true }
 
+				-- Global keymaps
 				opts.desc = "Show LSP references"
 				keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
 
@@ -72,22 +79,18 @@ return {
 
 				opts.desc = "Restart LSP"
 				keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
+
+				-- Server-specific logic (replaces deprecated on_attach)
+				if client and client.name == "svelte" then
+					vim.api.nvim_create_autocmd("BufWritePost", {
+						buffer = ev.buf,
+						pattern = { "*.js", "*.ts" },
+						callback = function(ctx)
+							client:notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+						end,
+					})
+				end
 			end,
-		})
-
-		-- capabilities for autocompletion
-		local capabilities = cmp_nvim_lsp.default_capabilities()
-
-		-- diagnostic symbols
-		vim.diagnostic.config({
-			signs = {
-				text = {
-					[vim.diagnostic.severity.ERROR] = " ",
-					[vim.diagnostic.severity.WARN] = " ",
-					[vim.diagnostic.severity.HINT] = "󰠠 ",
-					[vim.diagnostic.severity.INFO] = " ",
-				},
-			},
 		})
 
 		-- setup mason-lspconfig handlers
@@ -104,14 +107,6 @@ return {
 			["svelte"] = function()
 				vim.lsp.config("svelte", {
 					capabilities = capabilities,
-					on_attach = function(client, bufnr)
-						vim.api.nvim_create_autocmd("BufWritePost", {
-							pattern = { "*.js", "*.ts" },
-							callback = function(ctx)
-								client:notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-							end,
-						})
-					end,
 				})
 				vim.lsp.enable("svelte")
 			end,
@@ -157,5 +152,15 @@ return {
 				vim.lsp.enable("lua_ls")
 			end,
 		})
+
+		-- define htmx manually (custom server)
+		vim.lsp.config("htmx", {
+			cmd = { vim.fn.expand("~/.cargo/bin/htmx-lsp") },
+			filetypes = { "html", "templ" },
+			root_dir = function(fname)
+				return vim.fs.dirname(fname) or vim.fn.getcwd()
+			end,
+		})
+		vim.lsp.enable("htmx")
 	end,
 }
