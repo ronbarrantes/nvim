@@ -6,46 +6,96 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
-
-	-- All the user commands added by the plugin
 	cmd = { "Ollama", "OllamaModel", "OllamaServe", "OllamaServeStop" },
-
 	keys = {
-		-- Sample keybind for prompt menu. Note that the <c-u> is important for selections to work properly.
+		-- Open general Ollama prompt (chat)
 		{
 			"<leader>oo",
 			":<c-u>lua require('ollama').prompt()<cr>",
-			desc = "ollama prompt",
+			desc = "Ollama Chat Prompt",
 			mode = { "n", "v" },
 		},
-
-		-- Sample keybind for direct prompting. Note that the <c-u> is important for selections to work properly.
+		-- Generate/refactor code prompt
 		{
-			"<leader>oG",
-			":<c-u>lua require('ollama').prompt('Generate_Code')<cr>",
-			desc = "ollama Generate Code",
+			"<leader>or",
+			":<c-u>lua require('ollama').prompt('Refactor_Code')<cr>",
+			desc = "Ollama Refactor Code",
+			mode = { "n", "v" },
+		},
+		-- Explain code prompt
+		{
+			"<leader>oe",
+			":<c-u>lua require('ollama').prompt('Explain_Code')<cr>",
+			desc = "Ollama Explain Code",
+			mode = { "n", "v" },
+		},
+		-- Generate tests prompt
+		{
+			"<leader>ot",
+			":<c-u>lua require('ollama').prompt('Generate_Tests')<cr>",
+			desc = "Ollama Generate Tests",
 			mode = { "n", "v" },
 		},
 	},
-
-	---@type Ollama.Config
-	-- your configuration overrides
 	opts = {
-		model = "deepseek-coder",
+		-- Models
+		model = "qwen2.5-coder:3b", -- general chat model
+		model_code = "qwen2.5-coder:3b", -- coding-specific model (can be same)
 		url = "http://127.0.0.1:11434",
+
+		-- Automatically start Ollama server when Neovim opens
 		serve = {
-			on_start = false,
+			on_start = true,
 			command = "ollama",
 			args = { "serve" },
 			stop_command = "pkill",
 			stop_args = { "-SIGTERM", "ollama" },
 		},
-		-- View the actual default prompts in ./lua/ollama/prompts.lua
+
+		-- Request timeout (milliseconds)
+		request_timeout = 15000, -- 15 seconds timeout
+
+		-- Prompts
 		prompts = {
+			Refactor_Code = {
+				prompt = [[
+You are a senior software engineer.
+
+Here is the code snippet:
+$input
+
+Please refactor this code to improve readability and maintain behavior. Provide the updated code only.
+        ]],
+				input_label = "> ",
+				model = "qwen2.5-coder:3b",
+				action = "replace",
+			},
+			Explain_Code = {
+				prompt = [[
+You are a helpful assistant.
+
+Explain what this code does:
+$input
+        ]],
+				input_label = "> ",
+				model = "qwen2.5-coder:3b",
+				action = "display",
+			},
+			Generate_Tests = {
+				prompt = [[
+You are a test engineer.
+
+Write unit tests for this code:
+$input
+        ]],
+				input_label = "> ",
+				model = "qwen2.5-coder:3b",
+				action = "display",
+			},
 			Sample_Prompt = {
 				prompt = "This is a sample prompt that receives $input and $sel(ection), among others.",
 				input_label = "> ",
-				model = "deepseek-coder",
+				model = "qwen2.5-coder:3b",
 				action = "display",
 			},
 		},
