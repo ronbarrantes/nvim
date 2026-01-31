@@ -14,7 +14,7 @@ return {
 	build = "make",
 	opts = {
 		provider = "ollama", -- change from "copilot" to "ollama"
-		model = "qwen2.5-coder:7b", -- specify your Ollama model here
+		model = "qwen2.5-coder:3b", -- specify your Ollama model here
 		url = "http://127.0.0.1:11434", -- optional, if needed for Ollama endpoint
 	},
 }
