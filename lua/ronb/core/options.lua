@@ -69,3 +69,5 @@ opt.backspace = "indent,eol,start"
 -- split window
 opt.splitright = true
 opt.splitbelow = true
+
+opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"

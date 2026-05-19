@@ -1,7 +1,9 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	build = ":TSUpdate",
 
 	opts = {
+		parser_install_dir = vim.fn.stdpath("data") .. "/site/parser",
 		ensure_installed = {
 			"c",
 			"lua",
@@ -33,6 +35,8 @@ return {
 	},
 
 	config = function(_, opts)
+		vim.opt.runtimepath:append(opts.parser_install_dir)
+
 		-- @type table<string, ParserInfo>
 		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 		--
