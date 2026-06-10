@@ -5,6 +5,9 @@ local opt = vim.opt
 
 vim.g.copilot_enabled = false
 
+-- Ensure Mason-installed tools are on PATH for formatters/linters.
+vim.env.PATH = vim.env.PATH .. ":" .. vim.fn.stdpath("data") .. "/mason/bin"
+
 -- Remove mouse support
 opt.mouse = ""
 opt.eol = true
@@ -64,6 +67,7 @@ opt.updatetime = 50
 opt.colorcolumn = "80"
 
 opt.backspace = "indent,eol,start"
+opt.sessionoptions:append("localoptions")
 -- opt.clipboard:append("unnamedplus") -- use system clipboard
 
 -- split window
