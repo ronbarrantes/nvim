@@ -28,6 +28,7 @@ return {
 
 		require("tokyonight").setup({
 			style = theme == "dark" and "night" or "day",
+			transparent = true,
 			on_colors = function(colors)
 				colors.bg = bg
 				colors.bg_dark = bg_dark
@@ -45,6 +46,12 @@ return {
 				colors.fg_sidebar = fg_dark
 			end,
 			on_highlights = function(highlights)
+				highlights.Normal = { fg = fg, bg = "NONE" }
+				highlights.NormalNC = { fg = fg, bg = "NONE" }
+				highlights.NormalFloat = { fg = fg, bg = "NONE" }
+				highlights.SignColumn = { bg = "NONE" }
+				highlights.LineNr = { fg = fg_gutter, bg = "NONE" }
+				highlights.EndOfBuffer = { fg = fg_gutter, bg = "NONE" }
 				highlights.Comment = { fg = "#457547", italic = true }
 				highlights.LspDiagnosticsVirtualTextUnused = { fg = "#808080", italic = true } -- Gray and italic for unused variables
 			end,
