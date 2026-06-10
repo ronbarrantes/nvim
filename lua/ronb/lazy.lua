@@ -27,7 +27,6 @@ require("lazy").setup({
 		{ import = "ronb.plugins" },
 		{ import = "ronb.plugins.lsp" },
 	},
-}, {
 	checker = {
 		enabled = true,
 		notify = false,

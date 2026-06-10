@@ -8,16 +8,12 @@ return {
 			-- NEW STUFF
 			log_level = vim.log.levels.DEBUG,
 			formatters = {
-				prettier_custom = {
-					command = "npx",
-					args = {
-						"prettier",
-						"--stdin-filepath",
-						"$FILENAME",
-					},
-					stdin = true,
+				prettier = {
 					cwd = require("conform.util").root_file({
 						".prettierrc",
+						".prettierrc.json",
+						".prettierrc.js",
+						"prettier.config.js",
 						"package.json",
 						".git",
 					}),
@@ -41,15 +37,11 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				go = { "goimports", "gofumpt" },
-				templ = {
-					command = "templ",
-					args = { "fmt" },
-					stdin = false, -- templ does not support stdin formatting
-				},
+				templ = { "templ" },
 			},
 
 			format_on_save = {
-				lsp_fallback = true,
+				lsp_format = "fallback",
 				async = false,
 				timeout_ms = 1000,
 			},
@@ -57,7 +49,7 @@ return {
 
 		vim.keymap.set({ "n", "v" }, "<leader>mp", function()
 			conform.format({
-				lsp_fallback = true,
+				lsp_format = "fallback",
 				async = false,
 				timeout_ms = 1000,
 			})

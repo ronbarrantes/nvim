@@ -3,6 +3,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
+		"mason-org/mason-lspconfig.nvim",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/lazydev.nvim", opts = {} },
 	},
@@ -14,16 +15,6 @@ return {
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 		local keymap = vim.keymap -- for conciseness
-
-		-- define htmx manually
-		vim.lsp.config("htmx", {
-			cmd = { vim.fn.expand("~/.cargo/bin/htmx-lsp") },
-			filetypes = { "html", "templ" },
-			root_dir = function()
-				return (vim.fn.getcwd ~= nil and vim.fn.getcwd()) or vim.loop.cwd()
-			end,
-		})
-		vim.lsp.enable("htmx")
 
 		-- global keymaps on LspAttach
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -77,6 +68,16 @@ return {
 
 		-- capabilities for autocompletion
 		local capabilities = cmp_nvim_lsp.default_capabilities()
+		vim.lsp.config("*", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("htmx", {
+			cmd = { vim.fn.expand("~/.cargo/bin/htmx-lsp") },
+			filetypes = { "html", "templ" },
+			root_dir = vim.fn.getcwd,
+		})
+		vim.lsp.enable("htmx")
 
 		-- diagnostic symbols
 		vim.diagnostic.config({
@@ -90,72 +91,49 @@ return {
 			},
 		})
 
-		-- setup mason-lspconfig handlers
-		mason_lspconfig.setup_handlers({
-			-- default handler
-			function(server_name)
-				vim.lsp.config(server_name, {
-					capabilities = capabilities,
-				})
-				vim.lsp.enable(server_name)
-			end,
-
-			-- svelte
-			["svelte"] = function()
-				vim.lsp.config("svelte", {
-					capabilities = capabilities,
-					on_attach = function(client, bufnr)
-						vim.api.nvim_create_autocmd("BufWritePost", {
-							pattern = { "*.js", "*.ts" },
-							callback = function(ctx)
-								client:notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-							end,
-						})
+		vim.lsp.config("svelte", {
+			on_attach = function(client)
+				vim.api.nvim_create_autocmd("BufWritePost", {
+					pattern = { "*.js", "*.ts" },
+					callback = function(ctx)
+						client:notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
 					end,
 				})
-				vim.lsp.enable("svelte")
 			end,
+		})
 
-			-- graphql
-			["graphql"] = function()
-				vim.lsp.config("graphql", {
-					capabilities = capabilities,
-					filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-				})
-				vim.lsp.enable("graphql")
-			end,
+		vim.lsp.config("graphql", {
+			filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
+		})
 
-			-- emmet
-			["emmet_ls"] = function()
-				vim.lsp.config("emmet_ls", {
-					capabilities = capabilities,
-					filetypes = {
-						"html",
-						"typescriptreact",
-						"javascriptreact",
-						"css",
-						"sass",
-						"scss",
-						"less",
-						"svelte",
-					},
-				})
-				vim.lsp.enable("emmet_ls")
-			end,
+		vim.lsp.config("emmet_ls", {
+			filetypes = {
+				"html",
+				"typescriptreact",
+				"javascriptreact",
+				"css",
+				"sass",
+				"scss",
+				"less",
+				"svelte",
+			},
+		})
 
-			-- lua
-			["lua_ls"] = function()
-				vim.lsp.config("lua_ls", {
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							diagnostics = { globals = { "vim" } },
-							completion = { callSnippet = "Replace" },
-						},
-					},
-				})
-				vim.lsp.enable("lua_ls")
-			end,
+		vim.lsp.config("lua_ls", {
+			settings = {
+				Lua = {
+					completion = { callSnippet = "Replace" },
+				},
+			},
+		})
+
+		mason_lspconfig.setup({
+			ensure_installed = {
+				"gopls",
+			},
+			automatic_enable = {
+				exclude = { "stylua" },
+			},
 		})
 	end,
 }
