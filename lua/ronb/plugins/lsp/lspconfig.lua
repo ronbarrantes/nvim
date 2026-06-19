@@ -20,7 +20,8 @@ return {
 			cmd = { vim.fn.expand("~/.cargo/bin/htmx-lsp") },
 			filetypes = { "html", "templ" },
 			root_dir = function()
-				return (vim.fn.getcwd ~= nil and vim.fn.getcwd()) or vim.loop.cwd()
+				-- `vim.loop` is deprecated (use `vim.uv`). For this server, cwd is fine.
+				return vim.fn.getcwd()
 			end,
 		})
 		vim.lsp.enable("htmx")
