@@ -15,12 +15,17 @@ return {
 
 		local keymap = vim.keymap -- for conciseness
 
+		-- Neovim 0.10+: `vim.loop` is deprecated in favor of `vim.uv`.
+		-- Keep a backwards-compatible fallback without triggering warnings on newer versions.
+		local uv = vim.uv or vim.loop
+
 		-- define htmx manually
 		vim.lsp.config("htmx", {
 			cmd = { vim.fn.expand("~/.cargo/bin/htmx-lsp") },
 			filetypes = { "html", "templ" },
 			root_dir = function()
-				return (vim.fn.getcwd ~= nil and vim.fn.getcwd()) or vim.loop.cwd()
+				-- `vim.fn.getcwd()` should always exist, but keep a safe fallback.
+				return vim.fn.getcwd() or (uv and uv.cwd and uv.cwd())
 			end,
 		})
 		vim.lsp.enable("htmx")
