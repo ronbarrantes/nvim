@@ -70,6 +70,16 @@ opt.backspace = "indent,eol,start"
 opt.sessionoptions:append("localoptions")
 -- opt.clipboard:append("unnamedplus") -- use system clipboard
 
+vim.api.nvim_create_autocmd({ "BufFilePost", "BufWritePost" }, {
+	desc = "Detect filetype after saving an unnamed buffer with an extension",
+	pattern = "*",
+	callback = function()
+		if vim.bo.filetype == "" and vim.api.nvim_buf_get_name(0) ~= "" then
+			vim.cmd("filetype detect")
+		end
+	end,
+})
+
 -- split window
 opt.splitright = true
 opt.splitbelow = true

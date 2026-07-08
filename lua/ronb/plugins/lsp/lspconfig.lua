@@ -129,6 +129,7 @@ return {
 
 		mason_lspconfig.setup({
 			ensure_installed = {
+				"clangd",
 				"gopls",
 			},
 			automatic_enable = {

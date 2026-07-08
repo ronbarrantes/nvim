@@ -54,6 +54,11 @@ return {
 			},
 		})
 
+		vim.treesitter.query.add_directive("set-lang-from-info-string!", function() end, {
+			force = true,
+			all = false,
+		})
+
 		-- Set up Treesitter
 		require("nvim-treesitter.configs").setup(opts)
 	end,
