@@ -1,5 +1,7 @@
 return {
 	"nvim-telescope/telescope.nvim",
+	keys = { "<leader>fs", "<leader>ff", "<leader>fr", "<leader>fl", "<leader>fc", "<leader>fg", "<leader>ft" },
+	cmd = "Telescope",
 	-- tag = "0.1.8", -- removed: old version used deprecated vim.lsp.util.jump_to_location
 	dependencies = {
 		"nvim-lua/plenary.nvim",

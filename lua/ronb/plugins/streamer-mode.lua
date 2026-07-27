@@ -1,5 +1,6 @@
 return {
 	"Kolkhis/streamer-mode.nvim",
+	event = "VeryLazy",
 	-- config = function()
 	--   require("streamer-mode").setup({
 	--     -- Use the default paths and keywords in addition to your own.
@@ -28,4 +29,3 @@ return {
 	--   })
 	-- end,
 }
-

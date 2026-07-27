@@ -1,6 +1,7 @@
 -- local pattern = require("cmp.utils.pattern")
 return {
 	"laytan/cloak.nvim",
+	event = { "BufReadPre", "BufNewFile" },
 	opts = {
 		enabled = true,
 		cloak_character = "*",

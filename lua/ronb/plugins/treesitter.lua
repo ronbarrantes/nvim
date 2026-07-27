@@ -1,5 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	event = { "BufReadPost", "BufNewFile" },
 	build = ":TSUpdate",
 
 	opts = {
@@ -17,7 +18,8 @@ return {
 		},
 
 		sync_install = false,
-		auto_install = true,
+		-- Avoid compiling parsers while editing on the Pi. Use :TSInstall when wanted.
+		auto_install = false,
 		ignore_install = { "javascript" },
 
 		highlight = {
