@@ -19,6 +19,9 @@ return {
 
 		mason_tool_installer.setup({
 			ensure_installed = {
+				"js-debug-adapter",
+				"codelldb",
+				"debugpy",
 				"delve",
 				"gofumpt",
 				-- "prettier",

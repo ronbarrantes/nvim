@@ -75,7 +75,14 @@ return {
 		vim.lsp.config("htmx", {
 			cmd = { vim.fn.expand("~/.cargo/bin/htmx-lsp") },
 			filetypes = { "html", "templ" },
-			root_dir = vim.fn.getcwd,
+			root_dir = function(bufnr, on_dir)
+				local filename = vim.api.nvim_buf_get_name(bufnr)
+				local root = vim.fs.root(bufnr, { ".git", "package.json" })
+					or (filename ~= "" and vim.fs.dirname(filename))
+					or vim.uv.cwd()
+
+				on_dir(root)
+			end,
 		})
 		vim.lsp.enable("htmx")
 

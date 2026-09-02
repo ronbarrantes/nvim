@@ -1,5 +1,6 @@
 return {
 	"yetone/avante.nvim",
+	enabled = false, -- Disabled for now; remove this line to turn Avante back on.
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 		"stevearc/dressing.nvim",
